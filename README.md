@@ -1,6 +1,6 @@
 # HTTPS Proxy Role for Ansible
 
-Ansible role to set up nginx as a proxy, with the primary use case being HTTPS termination.
+Ansible role to set up nginx as a secure proxy. The primary use case is HTTPS termination for another service that can't do so on its own.
 
 ## Requirements
 

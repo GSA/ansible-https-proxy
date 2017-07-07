@@ -1,35 +1,25 @@
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  author: Aidan Feldman
+  description: Set up nginx as a secure proxy
+  company: General Services Administration
 
   license: CC0
 
   min_ansible_version: 1.2
 
-  # Optionally specify the branch Galaxy will use when accessing the GitHub
-  # repo for this role. During role install, if no tags are available,
-  # Galaxy will use this branch. During import Galaxy will access files on
-  # this branch. If travis integration is cofigured, only notification for this
-  # branch will be accepted. Otherwise, in all cases, the repo's default branch
-  # (usually master) will be used.
-  #github_branch:
+  platforms:
+    - name: EL
+      versions:
+        - 7
 
-  #
-  # Below are all platforms currently available. Just uncomment
-  # the ones that apply to your role. If you don't see your
-  # platform on this list, let us know and we'll get it added!
-  #
-  #platforms:
-
-  galaxy_tags: []
-    # List tags for your role here, one per line. A tag is
-    # a keyword that describes and categorizes the role.
-    # Users find roles by searching for tags. Be sure to
-    # remove the '[]' above if you add tags to this list.
-    #
-    # NOTE: A tag is limited to a single word comprised of
-    # alphanumeric characters. Maximum 20 tags per role.
+  galaxy_tags:
+    - nginx
+    - secure
+    - proxy
+    - https
+    - tls
+    - ssl
+    - termination
 
 dependencies:
 
