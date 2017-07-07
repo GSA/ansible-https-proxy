@@ -1,17 +1,19 @@
 # HTTPS Proxy Role for Ansible
 
-A brief description of the role goes here.
+Ansible role to set up nginx as a proxy, with the primary use case being HTTPS termination.
 
 ## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
-## Role Variables
+## Role variables
 
 Required variables:
 
 * `external_hostname` - the external URL of this proxy
 * `upstream_origin` - the internal hostname + port (if not 80) being proxied to
+* [SSL configuration](https://github.com/jdauphant/ansible-role-ssl-certs#examples)
+    * Storing [key data](https://github.com/jdauphant/ansible-role-ssl-certs#example-to-deploy-a-ssl-certificate-stored-in-variables) in a Vault is the recommended approach, though you can use the other options.
 
 ## Dependencies
 
@@ -19,14 +21,34 @@ Required variables:
 * [`geerlingguy.repo-epel`](https://galaxy.ansible.com/geerlingguy/repo-epel/)
 * [`jdauphant.ssl-certs`](https://galaxy.ansible.com/jdauphant/ssl-certs/)
 
-## Example Playbook
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example usage
 
 ```yaml
-- hosts: servers
+# requirements.yml
+- name: gsa.https-proxy
+  src: https://github.com/GSA/ansible-https-proxy
+
+# group_vars/https_proxy/vars.yml
+external_hostname: secure.site.gov
+upstream_origin: 127.0.0.1:8080
+ssl_certs_local_cert_data: "{{ vault_ssl_certs_local_cert_data }}"
+ssl_certs_local_privkey_data: "{{ vault_ssl_certs_local_privkey_data }}"
+
+# group_vars/https_proxy/vault.yml (encrypted)
+vault_ssl_certs_local_cert_data: |
+  -----BEGIN CERTIFICATE-----
+  ...
+  -----END CERTIFICATE-----
+vault_ssl_certs_local_privkey_data: |
+  -----BEGIN RSA PRIVATE KEY-----
+  ...
+  -----END RSA PRIVATE KEY-----
+
+# playbooks/https_proxy.yml
+- hosts: https_proxy
+  become: true
   roles:
-     - { role: username.rolename, x: 42 }
+    - gsa.https-proxy
 ```
 
 ## License

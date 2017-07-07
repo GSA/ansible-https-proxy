@@ -1,4 +1,5 @@
 ---
+# TODO only do this if the upstream_origin is local
 - name: Enable network connections within the machine
   seboolean:
     name: httpd_can_network_connect
