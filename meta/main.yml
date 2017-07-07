@@ -3,18 +3,7 @@ galaxy_info:
   description: your description
   company: your company (optional)
 
-  # If the issue tracker for your role is not on github, uncomment the
-  # next line and provide a value
-  # issue_tracker_url: http://example.com/issue/tracker
-
-  # Some suggested licenses:
-  # - BSD (default)
-  # - MIT
-  # - GPLv2
-  # - GPLv3
-  # - Apache
-  # - CC-BY
-  license: license (GPLv2, CC-BY, etc)
+  license: CC0
 
   min_ansible_version: 1.2
 
@@ -42,7 +31,23 @@ galaxy_info:
     # NOTE: A tag is limited to a single word comprised of
     # alphanumeric characters. Maximum 20 tags per role.
 
-dependencies: []
-  # List your role dependencies here, one per line.
-  # Be sure to remove the '[]' above if you add dependencies
-  # to this list.
+dependencies:
+
+  - role: geerlingguy.repo-epel
+
+  - role: geerlingguy.nginx
+    nginx_remove_default_vhost: true
+    nginx_server_tokens: "off"
+    # use EPEL version
+    nginx_yum_repo_enabled: false
+    nginx_upstreams:
+      - name: http_upstream
+        servers:
+          - "{{ upstream_origin }} fail_timeout=0"
+
+  - role: jdauphant.ssl-certs
+    # need to specify both here and in `defaults/main.yml`, due to https://github.com/ansible/ansible/issues/17678
+    ssl_certs_common_name: "{{ external_hostname }}"
+    # match geerlingguy.nginx
+    ssl_certs_path_owner: "{{ nginx_user }}"
+    ssl_certs_path_group: "{{ nginx_user }}"

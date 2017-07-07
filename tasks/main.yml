@@ -1,2 +1,31 @@
 ---
-# tasks file for gsa.https-proxy
+- name: Enable network connections within the machine
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
+
+# manage our own vhost file, because a) the template doesn't work for us, and b) we can use variables from `jdauphant.ssl-certs`
+- name: Add vhost config file
+  template:
+    src: vhost.conf
+    dest: "{{ nginx_vhost_path }}/https_proxy.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nginx
+
+- name: Restart nginx, if necessary
+  meta: flush_handlers
+
+- name: Check nginx redirects HTTP to HTTPS
+  uri:
+    url: http://localhost
+    follow_redirects: none
+    status_code: 301
+  register: http_req
+- name: Fail if HTTP doesn't redirect to HTTPS
+  fail:
+  when: http_req.location != 'https://localhost/'
+
+# TODO Check that nginx is listening on port 443. Not the responsibility of this role to check for a response from the proxied service.

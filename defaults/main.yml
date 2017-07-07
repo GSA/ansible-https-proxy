@@ -1,2 +1,4 @@
 ---
-# defaults file for gsa.https-proxy
+# a space-delimited list of server names that nginx should respond to
+# https://nginx.org/en/docs/http/server_names.html
+server_names: "{{ external_hostname }}"
