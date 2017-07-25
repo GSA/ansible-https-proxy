@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    upstream_origin: localhost:8000
   roles:
     # needs to match repository name; when the role is included normally, it will be `gsa.https-proxy`
     - ansible-https-proxy
