@@ -2,4 +2,5 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - gsa.https-proxy
+    # needs to match repository name; when the role is included normally, it will be `gsa.https-proxy`
+    - ansible-https-proxy

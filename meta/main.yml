@@ -21,6 +21,7 @@ galaxy_info:
     - ssl
     - termination
 
+# must match `../tests/requirements.yml`
 dependencies:
 
   - role: geerlingguy.repo-epel
