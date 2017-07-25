@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: /etc/jenkins-deploy
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install apk dependencies
+          command: apk add --update make
+      - run:
+          name: Install Ansible roles
+          command: make install_roles
+      - run:
+          name: Start remote container
+          command: |
+            docker run \
+              -it --privileged -d \
+              --name remote
+              --volume=`pwd`:/etc/ansible-https-proxy:ro --workdir /etc/ansible-https-proxy/tests \
+              geerlingguy/docker-centos7-ansible
+      - run:
+          name: Execute Ansible
+          command: docker exec -it remote ansible-playbook test.yml

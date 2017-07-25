@@ -1,4 +1,4 @@
-# HTTPS Proxy Role for Ansible
+# HTTPS Proxy Role for Ansible [![CircleCI](https://circleci.com/gh/GSA/ansible-https-proxy.svg?style=svg)](https://circleci.com/gh/GSA/ansible-https-proxy)
 
 Ansible role to set up nginx as a secure proxy. The primary use case is HTTPS termination for another service that can't do so on its own.
 
