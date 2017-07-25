@@ -13,15 +13,12 @@ jobs:
             docker run \
               -it --privileged -d \
               --name remote \
-              --volume=`pwd`:/etc/ansible-https-proxy --workdir /etc/ansible-https-proxy/tests \
+              --volume /etc/ansible-https-proxy --workdir /etc/ansible-https-proxy \
               geerlingguy/docker-centos7-ansible
+      # https://circleci.com/docs/2.0/building-docker-images/#mounting-folders
       - run:
-          name: Install roles
-          command: |
-            docker exec -it remote \
-              ansible-galaxy install -r requirements.yml
+          name: Copy local files
+          command: docker cp . remote:/etc/ansible-https-proxy
       - run:
-          name: Execute playbook
-          command: |
-            docker exec -it remote \
-              ansible-playbook test.yml
+          name: Run tests
+          command: docker exec -it remote ./tests/run.sh
