@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    # needs to match repository name
     # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
-    working_directory: /etc/ansible-https-proxy
+    working_directory: /etc/gsa.https-proxy
     docker:
       - image: docker
     steps:
