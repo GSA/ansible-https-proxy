@@ -37,7 +37,7 @@ dependencies:
           - "{{ upstream_origin }} fail_timeout=0"
 
   - role: jdauphant.ssl-certs
-    # need to specify both here and in `defaults/main.yml`, due to https://github.com/ansible/ansible/issues/17678
+    # need to specify both here and in `../defaults/main.yml`, due to https://github.com/ansible/ansible/issues/17678
     ssl_certs_common_name: "{{ external_hostname }}"
     # match geerlingguy.nginx
     ssl_certs_path_owner: "{{ nginx_user }}"
