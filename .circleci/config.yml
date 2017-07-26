@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    # needs to match repository name
+    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
+    working_directory: /etc/ansible-https-proxy
     docker:
       - image: docker
     steps:
@@ -8,23 +11,13 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start remote container
-          command: |
-            docker run \
-              -it --privileged -d \
-              --name remote \
-              --volume /etc/ansible-https-proxy --workdir /etc/ansible-https-proxy/tests \
-              geerlingguy/docker-centos7-ansible
-      # https://circleci.com/docs/2.0/building-docker-images/#mounting-folders
+          command: docker run -it --privileged -d --name remote centos/systemd
       - run:
-          name: Copy local files
-          command: docker cp . remote:/etc/ansible-https-proxy
+          name: Install Ansible
+          command: apk add --update-cache ansible
       - run:
           name: Install Ansible roles
-          command: |
-            docker exec -it remote \
-              ansible-galaxy install -r requirements.yml
+          command: cd tests && ansible-galaxy install -r requirements.yml
       - run:
           name: Run Ansible playbook
-          command: |
-            docker exec -it remote \
-              ansible-playbook test.yml
+          command: cd tests && ansible-playbook -i hosts test.yml

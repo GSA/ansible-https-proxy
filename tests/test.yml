@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  remote_user: root
+- hosts: all
   vars:
     # dummy values
     external_hostname: localhost
