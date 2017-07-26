@@ -1,10 +1,18 @@
 ---
+- name: Install seboolean dependencies
+  yum:
+    name:
+      - libselinux-python
+      - libsemanage-python
+
 # TODO only do this if the upstream_origin is local
 - name: Enable network connections within the machine
   seboolean:
     name: httpd_can_network_connect
     state: yes
     persistent: yes
+  # https://github.com/ansible/ansible/issues/18692
+  when: ansible_selinux is defined and ansible_selinux != False and ansible_selinux.status == 'enabled'
 
 # manage our own vhost file, because a) the template doesn't work for us, and b) we can use variables from `jdauphant.ssl-certs`
 - name: Add vhost config file

@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: /etc/jenkins-deploy
     docker:
       - image: docker
     steps:
