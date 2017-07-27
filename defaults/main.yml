@@ -5,3 +5,5 @@ ssl_certs_common_name: "{{ external_hostname }}"
 # a space-delimited list of server names that nginx should respond to
 # https://nginx.org/en/docs/http/server_names.html
 server_names: "{{ external_hostname }}"
+
+nginx_proxy_vhost_path: "{{ nginx_vhost_path }}/https_proxy.conf"

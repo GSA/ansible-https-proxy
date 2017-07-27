@@ -18,7 +18,7 @@
 - name: Add vhost config file
   template:
     src: vhost.conf
-    dest: "{{ nginx_vhost_path }}/https_proxy.conf"
+    dest: "{{ nginx_proxy_vhost_path }}"
     owner: root
     group: root
     mode: 0644
