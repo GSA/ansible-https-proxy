@@ -21,7 +21,6 @@ jobs:
           name: Run Ansible playbook
           command: cd tests && ansible-playbook -i hosts test.yml
   test-ubuntu-trusty:
-    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
       - image: docker
@@ -30,7 +29,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start remote container
-          command: docker run -it --privileged -d --name remote ubuntu/trusty
+          command: docker run -it --privileged -d --name remote ubuntu:trusty
       - run:
           name: Install Ansible
           command: apk add --update-cache ansible
@@ -41,7 +40,6 @@ jobs:
           name: Run Ansible playbook
           command: cd tests && ansible-playbook -i hosts test.yml
   test-ubuntu-xenial:
-    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
       - image: docker
@@ -50,7 +48,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start remote container
-          command: docker run -it --privileged -d --name remote ubuntu/xenial
+          command: docker run -it --privileged -d --name remote ubuntu:xenial
       - run:
           name: Install Ansible
           command: apk add --update-cache ansible
