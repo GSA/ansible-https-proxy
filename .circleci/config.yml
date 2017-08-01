@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_centos:
     # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
@@ -20,3 +20,43 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: cd tests && ansible-playbook -i hosts test.yml
+  build_trusty:
+    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
+    working_directory: /etc/gsa.https-proxy
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Start remote container
+          command: docker run -it --privileged -d --name remote ubuntu:14.04
+      - run:
+          name: Install Ansible
+          command: apk add --update-cache ansible
+      - run:
+          name: Install Ansible roles
+          command: cd tests && ansible-galaxy install -r requirements.yml
+      - run:
+          name: Run Ansible playbook
+          command: cd tests && ansible-playbook -i hosts test.yml
+  build_xenial:
+    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
+    working_directory: /etc/gsa.https-proxy
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Start remote container
+          command: docker run -it --privileged -d --name remote ubuntu:16.04
+      - run:
+          name: Install Ansible
+          command: apk add --update-cache ansible
+      - run:
+          name: Install Ansible roles
+          command: cd tests && ansible-galaxy install -r requirements.yml
+      - run:
+          name: Run Ansible playbook
+          command: cd tests && ansible-playbook -i hosts test.yml            

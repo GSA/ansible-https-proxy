@@ -1,9 +1,16 @@
 ---
+- name: add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: config should not be worldwide read- or writeable
+  file: path="{{nginx_root_dir}}" mode="o-rw" owner="root" group="root" recurse=yes
+
 - name: Install seboolean dependencies
   yum:
     name:
       - libselinux-python
       - libsemanage-python
+  when: ansible_os_family == 'RedHat'
 
 # TODO only do this if the upstream_origin is local
 - name: Enable network connections within the machine
@@ -12,7 +19,7 @@
     state: yes
     persistent: yes
   # https://github.com/ansible/ansible/issues/18692
-  when: ansible_selinux is defined and ansible_selinux != False and ansible_selinux.status == 'enabled'
+  when: ansible_os_family == 'RedHat' and ansible_selinux is defined and ansible_selinux != False and ansible_selinux.status == 'enabled'
 
 # manage our own vhost file, because a) the template doesn't work for us, and b) we can use variables from `jdauphant.ssl-certs`
 - name: Add vhost config file
