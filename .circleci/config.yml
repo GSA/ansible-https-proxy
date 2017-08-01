@@ -29,7 +29,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start remote container
-          command: docker run -it --privileged -d --name remote rndmh3ro/docker-ubuntu1404-ansible-latest
+          command: docker run -it --privileged -d --name remote rndmh3ro/docker-ubuntu1404-ansible
       - run:
           name: Install Ansible
           command: apk add --update-cache ansible
@@ -48,7 +48,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Start remote container
-          command: docker run -it --privileged -d --name remote rndmh3ro/docker-ubuntu1604-ansible-latest
+          command: docker run -it --privileged -d --name remote rndmh3ro/docker-ubuntu1604-ansible
       - run:
           name: Install Ansible
           command: apk add --update-cache ansible
