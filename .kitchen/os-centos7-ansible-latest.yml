@@ -1,0 +1,9 @@
+---
+username: kitchen
+ssh_key: "/home/john/ansible-https-proxy/.kitchen/docker_id_rsa"
+image_id: 76fac104ae78
+container_id: 07a32b35818e885f895f1be28b497b66cccccafabc8e7f0b18f079280e126859
+hostname: localhost
+port: 32776
+last_action: create
+last_error: Kitchen::ActionFailed

@@ -1,0 +1,3 @@
+---
+username: kitchen
+ssh_key: "/home/john/ansible-https-proxy/.kitchen/docker_id_rsa"
