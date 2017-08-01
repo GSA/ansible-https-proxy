@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_centos:
+  test-centos-7:
     # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: cd tests && ansible-playbook -i hosts test.yml
-  build_trusty:
+  test-ubuntu-trusty:
     # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: cd tests && ansible-playbook -i hosts test.yml
-  build_xenial:
+  test-ubuntu-xenial:
     # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
     working_directory: /etc/gsa.https-proxy
     docker:
@@ -59,4 +59,11 @@ jobs:
           command: cd tests && ansible-galaxy install -r requirements.yml
       - run:
           name: Run Ansible playbook
-          command: cd tests && ansible-playbook -i hosts test.yml            
+          command: cd tests && ansible-playbook -i hosts test.yml
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test-centos-7
+      - test-ubuntu-trusty
+      - test-ubuntu-xenial
