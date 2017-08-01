@@ -1,67 +1,44 @@
 version: 2
 jobs:
   test-centos-7:
-    # https://circleci.com/docs/2.0/local-jobs/#relative-path-for-working_directory
-    working_directory: /etc/gsa.https-proxy
-    docker:
-      - image: docker
+    working_directory: ~/ansible-https-proxy
+    machine:
+      ruby:
+        version: 2.4
+      services:
+        - docker
     steps:
       - checkout
-      - setup_remote_docker
       - run:
-          name: Start remote container
-          command: docker run -it --privileged -d --name remote centos/systemd
+          name: Install bundler
+          command: gem install bundler
       - run:
-          name: Install Ansible
-          command: apk add --update-cache ansible
+          name: Install test-kitchen
+          command: bundle install
       - run:
-          name: Install Ansible roles
-          command: cd tests && ansible-galaxy install -r requirements.yml
-      - run:
-          name: Run Ansible playbook
-          command: cd tests && ansible-playbook -i hosts test.yml
+          name: Run test-kitchen
+          command: bundle exec kitchen test os-centos7-ansible-latest
   test-ubuntu-trusty:
-    working_directory: /etc/gsa.https-proxy
-    docker:
-      - image: docker
+    working_directory: ~/ansible-https-proxy
+    machine:
+      ruby:
+        version: 2.4
+      services:
+        - docker
     steps:
       - checkout
-      - setup_remote_docker
       - run:
-          name: Start remote container
-          command: docker run -it --privileged -d --name remote williamyeh/ansible:ubuntu14.04
+          name: Install bundler
+          command: gem install bundler
       - run:
-          name: Install Ansible
-          command: apk add --update-cache ansible
+          name: Install test-kitchen
+          command: bundle install
       - run:
-          name: Install Ansible roles
-          command: cd tests && ansible-galaxy install -r requirements.yml
-      - run:
-          name: Run Ansible playbook
-          command: cd tests && ansible-playbook -i hosts test.yml
-  test-ubuntu-xenial:
-    working_directory: /etc/gsa.https-proxy
-    docker:
-      - image: docker
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run:
-          name: Start remote container
-          command: docker run -it --privileged -d --name remote williamyeh/ansible:ubuntu16.04
-      - run:
-          name: Install Ansible
-          command: apk add --update-cache ansible
-      - run:
-          name: Install Ansible roles
-          command: cd tests && ansible-galaxy install -r requirements.yml
-      - run:
-          name: Run Ansible playbook
-          command: cd tests && ansible-playbook -i hosts test.yml
+          name: Run test-kitchen
+          command: bundle exec kitchen test os-ubuntu1404-ansible-latest
 workflows:
   version: 2
   build:
     jobs:
       - test-centos-7
       - test-ubuntu-trusty
-      - test-ubuntu-xenial
