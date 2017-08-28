@@ -22,12 +22,11 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload nginx
+  notify:
+    - validate nginx configuration
+    - reload nginx
 
-- name: Check nginx config file is valid
-  command: nginx -t
-
-- name: Restart nginx, if necessary
+- name: Reload nginx, if necessary
   meta: flush_handlers
 
 - name: Check nginx redirects HTTP to HTTPS
