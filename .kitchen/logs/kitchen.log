@@ -1,0 +1,83 @@
+I, [2017-08-01T15:33:54.914965 #1448]  INFO -- Kitchen: -----> Starting Kitchen (v1.16.0)
+I, [2017-08-01T15:33:55.519806 #1448]  INFO -- Kitchen: -----> Cleaning up any prior instances of <os-centos7-ansible-latest>
+I, [2017-08-01T15:33:55.520474 #1448]  INFO -- Kitchen: -----> Destroying <os-centos7-ansible-latest>...
+I, [2017-08-01T15:33:55.965019 #1448]  INFO -- Kitchen: -----> Testing <os-centos7-ansible-latest>
+I, [2017-08-01T15:33:55.965229 #1448]  INFO -- Kitchen: -----> Creating <os-centos7-ansible-latest>...
+I, [2017-08-01T15:33:56.662804 #1448]  INFO -- Kitchen: -----> Converging <os-centos7-ansible-latest>...
+E, [2017-08-01T15:34:05.156304 #1448] ERROR -- Kitchen: ------Exception-------
+E, [2017-08-01T15:34:05.156476 #1448] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2017-08-01T15:34:05.156552 #1448] ERROR -- Kitchen: Message: 1 actions failed.
+>>>>>>     Converge failed on instance <os-centos7-ansible-latest>.  Please see .kitchen/logs/os-centos7-ansible-latest.log for more details
+E, [2017-08-01T15:34:05.156600 #1448] ERROR -- Kitchen: ----------------------
+E, [2017-08-01T15:34:05.156646 #1448] ERROR -- Kitchen: ------Backtrace-------
+E, [2017-08-01T15:34:05.156692 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:183:in `report_errors'
+E, [2017-08-01T15:34:05.156736 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:174:in `run_action'
+E, [2017-08-01T15:34:05.156777 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command/test.rb:42:in `block in call'
+E, [2017-08-01T15:34:05.156825 #1448] ERROR -- Kitchen: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.156868 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command/test.rb:38:in `call'
+E, [2017-08-01T15:34:05.156908 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/cli.rb:53:in `perform'
+E, [2017-08-01T15:34:05.156951 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/cli.rb:234:in `test'
+E, [2017-08-01T15:34:05.156994 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/thor-0.19.1/lib/thor/command.rb:27:in `run'
+E, [2017-08-01T15:34:05.157035 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/thor-0.19.1/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2017-08-01T15:34:05.157075 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/cli.rb:334:in `invoke_task'
+E, [2017-08-01T15:34:05.157115 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/thor-0.19.1/lib/thor.rb:359:in `dispatch'
+E, [2017-08-01T15:34:05.157155 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/thor-0.19.1/lib/thor/base.rb:440:in `start'
+E, [2017-08-01T15:34:05.157196 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/bin/kitchen:13:in `block in <top (required)>'
+E, [2017-08-01T15:34:05.157235 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/errors.rb:171:in `with_friendly_errors'
+E, [2017-08-01T15:34:05.157275 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/bin/kitchen:13:in `<top (required)>'
+E, [2017-08-01T15:34:05.157313 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/bin/kitchen:22:in `load'
+E, [2017-08-01T15:34:05.157397 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/bin/kitchen:22:in `<main>'
+E, [2017-08-01T15:34:05.157436 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `eval'
+E, [2017-08-01T15:34:05.157484 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/bin/ruby_executable_hooks:15:in `<main>'
+E, [2017-08-01T15:34:05.157519 #1448] ERROR -- Kitchen: ----End Backtrace-----
+E, [2017-08-01T15:34:05.157552 #1448] ERROR -- Kitchen: -Composite Exception--
+E, [2017-08-01T15:34:05.157591 #1448] ERROR -- Kitchen: Class: Kitchen::InstanceFailure
+E, [2017-08-01T15:34:05.157660 #1448] ERROR -- Kitchen: Message: Converge failed on instance <os-centos7-ansible-latest>.  Please see .kitchen/logs/os-centos7-ansible-latest.log for more details
+E, [2017-08-01T15:34:05.157708 #1448] ERROR -- Kitchen: ----------------------
+E, [2017-08-01T15:34:05.157752 #1448] ERROR -- Kitchen: ------Backtrace-------
+E, [2017-08-01T15:34:05.157794 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:83:in `rescue in call'
+E, [2017-08-01T15:34:05.157838 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:86:in `call'
+E, [2017-08-01T15:34:05.157881 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:384:in `block in converge_action'
+E, [2017-08-01T15:34:05.157923 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:527:in `synchronize_or_call'
+E, [2017-08-01T15:34:05.157967 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:489:in `block in action'
+E, [2017-08-01T15:34:05.158011 #1448] ERROR -- Kitchen: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.158056 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:488:in `action'
+E, [2017-08-01T15:34:05.158099 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:380:in `converge_action'
+E, [2017-08-01T15:34:05.158142 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:359:in `block in transition_to'
+E, [2017-08-01T15:34:05.158184 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `each'
+E, [2017-08-01T15:34:05.158229 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `transition_to'
+E, [2017-08-01T15:34:05.158275 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:157:in `verify'
+E, [2017-08-01T15:34:05.158323 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:186:in `block in test'
+E, [2017-08-01T15:34:05.158369 #1448] ERROR -- Kitchen: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.158408 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:182:in `test'
+E, [2017-08-01T15:34:05.158435 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2017-08-01T15:34:05.158461 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2017-08-01T15:34:05.158486 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2017-08-01T15:34:05.158511 #1448] ERROR -- Kitchen: ----End Backtrace-----
+E, [2017-08-01T15:34:05.158535 #1448] ERROR -- Kitchen: ---Nested Exception---
+E, [2017-08-01T15:34:05.158559 #1448] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2017-08-01T15:34:05.158584 #1448] ERROR -- Kitchen: Message: SSH exited (1) for command: [          
+          
+          ANSIBLE_ROLES_PATH=/tmp/kitchen/roles sudo -E -s  ansible-playbook -i /tmp/kitchen/hosts  -c local -M /tmp/kitchen/modules -v  --diff       /tmp/kitchen/test.yml
+]
+E, [2017-08-01T15:34:05.158609 #1448] ERROR -- Kitchen: ----------------------
+E, [2017-08-01T15:34:05.158633 #1448] ERROR -- Kitchen: ------Backtrace-------
+E, [2017-08-01T15:34:05.158658 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:83:in `rescue in call'
+E, [2017-08-01T15:34:05.158704 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:86:in `call'
+E, [2017-08-01T15:34:05.158730 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:384:in `block in converge_action'
+E, [2017-08-01T15:34:05.158755 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:527:in `synchronize_or_call'
+E, [2017-08-01T15:34:05.158780 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:489:in `block in action'
+E, [2017-08-01T15:34:05.158831 #1448] ERROR -- Kitchen: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.158864 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:488:in `action'
+E, [2017-08-01T15:34:05.158890 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:380:in `converge_action'
+E, [2017-08-01T15:34:05.158915 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:359:in `block in transition_to'
+E, [2017-08-01T15:34:05.158940 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `each'
+E, [2017-08-01T15:34:05.158965 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `transition_to'
+E, [2017-08-01T15:34:05.158990 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:157:in `verify'
+E, [2017-08-01T15:34:05.159016 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:186:in `block in test'
+E, [2017-08-01T15:34:05.159043 #1448] ERROR -- Kitchen: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.159070 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:182:in `test'
+E, [2017-08-01T15:34:05.159095 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2017-08-01T15:34:05.159120 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2017-08-01T15:34:05.159144 #1448] ERROR -- Kitchen: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2017-08-01T15:34:05.159169 #1448] ERROR -- Kitchen: ----End Backtrace-----

@@ -1,0 +1,170 @@
+I, [2017-08-01T15:33:55.519905 #1448]  INFO -- os-centos7-ansible-latest: -----> Cleaning up any prior instances of <os-centos7-ansible-latest>
+I, [2017-08-01T15:33:55.520544 #1448]  INFO -- os-centos7-ansible-latest: -----> Destroying <os-centos7-ansible-latest>...
+I, [2017-08-01T15:33:55.566443 #1448]  INFO -- os-centos7-ansible-latest: UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+I, [2017-08-01T15:33:55.566557 #1448]  INFO -- os-centos7-ansible-latest: root                507                 488                 0                   15:30               ?                   00:00:00            /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=no -o PasswordAuthentication=yes -o UsePrivilegeSeparation=no -o PidFile=/tmp/sshd.pid
+I, [2017-08-01T15:33:55.911662 #1448]  INFO -- os-centos7-ansible-latest: 2e2836f92311b352b76eb8371e36e036da906faf471ee1585c21dd8e3d60ef38
+I, [2017-08-01T15:33:55.950367 #1448]  INFO -- os-centos7-ansible-latest: 2e2836f92311b352b76eb8371e36e036da906faf471ee1585c21dd8e3d60ef38
+I, [2017-08-01T15:33:55.964752 #1448]  INFO -- os-centos7-ansible-latest: Finished destroying <os-centos7-ansible-latest> (0m0.44s).
+I, [2017-08-01T15:33:55.965094 #1448]  INFO -- os-centos7-ansible-latest: -----> Testing <os-centos7-ansible-latest>
+I, [2017-08-01T15:33:55.965287 #1448]  INFO -- os-centos7-ansible-latest: -----> Creating <os-centos7-ansible-latest>...
+I, [2017-08-01T15:33:56.001778 #1448]  INFO -- os-centos7-ansible-latest: Sending build context to Docker daemon    193kB
+I, [2017-08-01T15:33:56.088390 #1448]  INFO -- os-centos7-ansible-latest: Step 1/16 : FROM rndmh3ro/docker-centos7-ansible:latest
+I, [2017-08-01T15:33:56.089122 #1448]  INFO -- os-centos7-ansible-latest:  ---> 3248445afa8a
+I, [2017-08-01T15:33:56.089267 #1448]  INFO -- os-centos7-ansible-latest: Step 2/16 : ENV container docker
+I, [2017-08-01T15:33:56.089804 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.089904 #1448]  INFO -- os-centos7-ansible-latest:  ---> e05e962c2a96
+I, [2017-08-01T15:33:56.089966 #1448]  INFO -- os-centos7-ansible-latest: Step 3/16 : RUN yum clean all
+I, [2017-08-01T15:33:56.091560 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.091675 #1448]  INFO -- os-centos7-ansible-latest:  ---> f5cc98caf9d2
+I, [2017-08-01T15:33:56.091720 #1448]  INFO -- os-centos7-ansible-latest: Step 4/16 : RUN yum install -y sudo openssh-server openssh-clients which curl
+I, [2017-08-01T15:33:56.091754 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.091793 #1448]  INFO -- os-centos7-ansible-latest:  ---> 40fcc6c5a4a8
+I, [2017-08-01T15:33:56.091826 #1448]  INFO -- os-centos7-ansible-latest: Step 5/16 : RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+I, [2017-08-01T15:33:56.091857 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.091884 #1448]  INFO -- os-centos7-ansible-latest:  ---> b4e9a77e9a48
+I, [2017-08-01T15:33:56.091915 #1448]  INFO -- os-centos7-ansible-latest: Step 6/16 : RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+I, [2017-08-01T15:33:56.095498 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.095613 #1448]  INFO -- os-centos7-ansible-latest:  ---> 24aecc7680d6
+I, [2017-08-01T15:33:56.095674 #1448]  INFO -- os-centos7-ansible-latest: Step 7/16 : RUN if ! getent passwd kitchen; then                 useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;               fi
+I, [2017-08-01T15:33:56.095751 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.095806 #1448]  INFO -- os-centos7-ansible-latest:  ---> 0130ca07dc79
+I, [2017-08-01T15:33:56.095888 #1448]  INFO -- os-centos7-ansible-latest: Step 8/16 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+I, [2017-08-01T15:33:56.095956 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.096006 #1448]  INFO -- os-centos7-ansible-latest:  ---> 1d9137612b9d
+I, [2017-08-01T15:33:56.096284 #1448]  INFO -- os-centos7-ansible-latest: Step 9/16 : RUN echo "Defaults !requiretty" >> /etc/sudoers
+I, [2017-08-01T15:33:56.096333 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.096383 #1448]  INFO -- os-centos7-ansible-latest:  ---> dc52d0a04ed4
+I, [2017-08-01T15:33:56.096434 #1448]  INFO -- os-centos7-ansible-latest: Step 10/16 : RUN mkdir -p /home/kitchen/.ssh
+I, [2017-08-01T15:33:56.096485 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.096549 #1448]  INFO -- os-centos7-ansible-latest:  ---> 01752b27b229
+I, [2017-08-01T15:33:56.096619 #1448]  INFO -- os-centos7-ansible-latest: Step 11/16 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2017-08-01T15:33:56.096683 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.096738 #1448]  INFO -- os-centos7-ansible-latest:  ---> ee374ae7cbfb
+I, [2017-08-01T15:33:56.096792 #1448]  INFO -- os-centos7-ansible-latest: Step 12/16 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2017-08-01T15:33:56.096843 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.096891 #1448]  INFO -- os-centos7-ansible-latest:  ---> 335c7140879b
+I, [2017-08-01T15:33:56.096945 #1448]  INFO -- os-centos7-ansible-latest: Step 13/16 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2017-08-01T15:33:56.099481 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.099598 #1448]  INFO -- os-centos7-ansible-latest:  ---> b8bcecd5d7d7
+I, [2017-08-01T15:33:56.099657 #1448]  INFO -- os-centos7-ansible-latest: Step 14/16 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2017-08-01T15:33:56.099714 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.099763 #1448]  INFO -- os-centos7-ansible-latest:  ---> 1379ee29a697
+I, [2017-08-01T15:33:56.099830 #1448]  INFO -- os-centos7-ansible-latest: Step 15/16 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2017-08-01T15:33:56.099886 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.099934 #1448]  INFO -- os-centos7-ansible-latest:  ---> afe660127618
+I, [2017-08-01T15:33:56.100264 #1448]  INFO -- os-centos7-ansible-latest: Step 16/16 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQC93wYQfC30ezcOURg2fceOBQCl8O4LKO1hZLRRDKoeyBk/tSp56iTE0wL1kazW5O2p5e2YjMD656pyBE0rzZejYiV023W9inFXdtE8dcrHNeg3KdpW\+giLzrBWWt4AZB92x2zuYDGhF1zw1HrGfcdaCrKSoMrjTEmhvpTOZtQGIusHXh9jF1/avKbmO/97rgGCwKealXCtAML\+Pk2bpklG22IDYkqZkZEK/eaJvj6neFl2/Tkk8ElUHOGDWkKTJc3jzDOXXxk\+/0QH50P\+OcRqqHZcIOkJhgk\+SNEvDzbtwLAKR6TBkx3OFjl2RbFKnbAOONOS1qB7\+X5ORmMBOCU1\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2017-08-01T15:33:56.100326 #1448]  INFO -- os-centos7-ansible-latest:  ---> Using cache
+I, [2017-08-01T15:33:56.100378 #1448]  INFO -- os-centos7-ansible-latest:  ---> 76fac104ae78
+I, [2017-08-01T15:33:56.102640 #1448]  INFO -- os-centos7-ansible-latest: Successfully built 76fac104ae78
+I, [2017-08-01T15:33:56.227992 #1448]  INFO -- os-centos7-ansible-latest: 07a32b35818e885f895f1be28b497b66cccccafabc8e7f0b18f079280e126859
+I, [2017-08-01T15:33:56.550086 #1448]  INFO -- os-centos7-ansible-latest: 0.0.0.0:32776
+I, [2017-08-01T15:33:56.660782 #1448]  INFO -- os-centos7-ansible-latest: [SSH] Established
+I, [2017-08-01T15:33:56.662667 #1448]  INFO -- os-centos7-ansible-latest: Finished creating <os-centos7-ansible-latest> (0m0.70s).
+I, [2017-08-01T15:33:56.662881 #1448]  INFO -- os-centos7-ansible-latest: -----> Converging <os-centos7-ansible-latest>...
+I, [2017-08-01T15:33:56.664169 #1448]  INFO -- os-centos7-ansible-latest: Preparing files for transfer
+I, [2017-08-01T15:33:56.664316 #1448]  INFO -- os-centos7-ansible-latest: Preparing playbook
+I, [2017-08-01T15:33:56.664668 #1448]  INFO -- os-centos7-ansible-latest: Preparing inventory
+I, [2017-08-01T15:33:56.664814 #1448]  INFO -- os-centos7-ansible-latest: Preparing modules
+I, [2017-08-01T15:33:56.665119 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for modules
+I, [2017-08-01T15:33:56.665256 #1448]  INFO -- os-centos7-ansible-latest: Preparing roles
+I, [2017-08-01T15:33:56.680173 #1448]  INFO -- os-centos7-ansible-latest: Preparing ansible.cfg file
+I, [2017-08-01T15:33:56.680456 #1448]  INFO -- os-centos7-ansible-latest: Found existing ansible.cfg
+I, [2017-08-01T15:33:56.680694 #1448]  INFO -- os-centos7-ansible-latest: Preparing group_vars
+I, [2017-08-01T15:33:56.680968 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for group_vars
+I, [2017-08-01T15:33:56.681093 #1448]  INFO -- os-centos7-ansible-latest: Preparing additional_copy_path
+I, [2017-08-01T15:33:56.681273 #1448]  INFO -- os-centos7-ansible-latest: Preparing host_vars
+I, [2017-08-01T15:33:56.681475 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for host_vars
+I, [2017-08-01T15:33:56.681588 #1448]  INFO -- os-centos7-ansible-latest: Preparing hosts file
+I, [2017-08-01T15:33:56.681785 #1448]  INFO -- os-centos7-ansible-latest: Preparing spec
+I, [2017-08-01T15:33:56.681949 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for spec
+I, [2017-08-01T15:33:56.682041 #1448]  INFO -- os-centos7-ansible-latest: Preparing library plugins
+I, [2017-08-01T15:33:56.682266 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for library plugins
+I, [2017-08-01T15:33:56.682354 #1448]  INFO -- os-centos7-ansible-latest: Preparing callback plugins
+I, [2017-08-01T15:33:56.682526 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for callback plugins
+I, [2017-08-01T15:33:56.682602 #1448]  INFO -- os-centos7-ansible-latest: Preparing filter_plugins
+I, [2017-08-01T15:33:56.682802 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for filter_plugins
+I, [2017-08-01T15:33:56.682880 #1448]  INFO -- os-centos7-ansible-latest: Preparing lookup_plugins
+I, [2017-08-01T15:33:56.683045 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for lookup_plugins
+I, [2017-08-01T15:33:56.683176 #1448]  INFO -- os-centos7-ansible-latest: Preparing additional_ssh_private_keys
+I, [2017-08-01T15:33:56.683314 #1448]  INFO -- os-centos7-ansible-latest: nothing to do for additional_ssh_private_keys
+I, [2017-08-01T15:33:56.683405 #1448]  INFO -- os-centos7-ansible-latest: Finished Preparing files for transfer
+I, [2017-08-01T15:33:56.731906 #1448]  INFO -- os-centos7-ansible-latest: Transferring files to <os-centos7-ansible-latest>
+I, [2017-08-01T15:34:01.333545 #1448]  INFO -- os-centos7-ansible-latest: - downloading role 'nginx', owned by geerlingguy
+I, [2017-08-01T15:34:01.811991 #1448]  INFO -- os-centos7-ansible-latest: - downloading role from https://github.com/geerlingguy/ansible-role-nginx/archive/2.4.0.tar.gz
+I, [2017-08-01T15:34:02.355614 #1448]  INFO -- os-centos7-ansible-latest: - extracting geerlingguy.nginx to /tmp/kitchen/roles/geerlingguy.nginx
+I, [2017-08-01T15:34:02.363644 #1448]  INFO -- os-centos7-ansible-latest: - geerlingguy.nginx (2.4.0) was installed successfully
+I, [2017-08-01T15:34:02.546830 #1448]  INFO -- os-centos7-ansible-latest: - downloading role 'repo-epel', owned by geerlingguy
+I, [2017-08-01T15:34:03.013590 #1448]  INFO -- os-centos7-ansible-latest: - downloading role from https://github.com/geerlingguy/ansible-role-repo-epel/archive/1.2.2.tar.gz
+I, [2017-08-01T15:34:03.595815 #1448]  INFO -- os-centos7-ansible-latest: - extracting geerlingguy.repo-epel to /tmp/kitchen/roles/geerlingguy.repo-epel
+I, [2017-08-01T15:34:03.598114 #1448]  INFO -- os-centos7-ansible-latest: - geerlingguy.repo-epel (1.2.2) was installed successfully
+I, [2017-08-01T15:34:03.757677 #1448]  INFO -- os-centos7-ansible-latest: - downloading role 'ssl-certs', owned by jdauphant
+I, [2017-08-01T15:34:04.216856 #1448]  INFO -- os-centos7-ansible-latest: - downloading role from https://github.com/jdauphant/ansible-role-ssl-certs/archive/v1.4.tar.gz
+I, [2017-08-01T15:34:04.878742 #1448]  INFO -- os-centos7-ansible-latest: - extracting jdauphant.ssl-certs to /tmp/kitchen/roles/jdauphant.ssl-certs
+I, [2017-08-01T15:34:04.882251 #1448]  INFO -- os-centos7-ansible-latest: - jdauphant.ssl-certs (v1.4) was installed successfully
+I, [2017-08-01T15:34:05.095134 #1448]  INFO -- os-centos7-ansible-latest: Using /etc/ansible/ansible.cfg as config file
+I, [2017-08-01T15:34:05.120460 #1448]  INFO -- os-centos7-ansible-latest: [0;31mERROR! the role 'gsa.https-proxy' was not found in /tmp/kitchen/roles:/tmp/kitchen/roles:/tmp/kitchen[0m
+I, [2017-08-01T15:34:05.120593 #1448]  INFO -- os-centos7-ansible-latest: [0;31m[0m
+I, [2017-08-01T15:34:05.120653 #1448]  INFO -- os-centos7-ansible-latest: [0;31mThe error appears to have been in '/tmp/kitchen/test.yml': line 8, column 7, but may[0m
+I, [2017-08-01T15:34:05.120705 #1448]  INFO -- os-centos7-ansible-latest: [0;31mbe elsewhere in the file depending on the exact syntax problem.[0m
+I, [2017-08-01T15:34:05.120755 #1448]  INFO -- os-centos7-ansible-latest: [0;31m[0m
+I, [2017-08-01T15:34:05.120802 #1448]  INFO -- os-centos7-ansible-latest: [0;31mThe offending line appears to be:[0m
+I, [2017-08-01T15:34:05.120848 #1448]  INFO -- os-centos7-ansible-latest: [0;31m[0m
+I, [2017-08-01T15:34:05.120895 #1448]  INFO -- os-centos7-ansible-latest: [0;31m  roles:[0m
+I, [2017-08-01T15:34:05.120947 #1448]  INFO -- os-centos7-ansible-latest: [0;31m    - gsa.https-proxy[0m
+I, [2017-08-01T15:34:05.120994 #1448]  INFO -- os-centos7-ansible-latest: [0;31m      ^ here[0m
+I, [2017-08-01T15:34:05.121038 #1448]  INFO -- os-centos7-ansible-latest: [0;31m[0m
+E, [2017-08-01T15:34:05.151554 #1448] ERROR -- os-centos7-ansible-latest: Converge failed on instance <os-centos7-ansible-latest>.
+E, [2017-08-01T15:34:05.151750 #1448] ERROR -- os-centos7-ansible-latest: ------Exception-------
+E, [2017-08-01T15:34:05.151812 #1448] ERROR -- os-centos7-ansible-latest: Class: Kitchen::ActionFailed
+E, [2017-08-01T15:34:05.151857 #1448] ERROR -- os-centos7-ansible-latest: Message: SSH exited (1) for command: [          
+          
+          ANSIBLE_ROLES_PATH=/tmp/kitchen/roles sudo -E -s  ansible-playbook -i /tmp/kitchen/hosts  -c local -M /tmp/kitchen/modules -v  --diff       /tmp/kitchen/test.yml
+]
+E, [2017-08-01T15:34:05.151906 #1448] ERROR -- os-centos7-ansible-latest: ----------------------
+E, [2017-08-01T15:34:05.151951 #1448] ERROR -- os-centos7-ansible-latest: ------Backtrace-------
+E, [2017-08-01T15:34:05.151996 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:83:in `rescue in call'
+E, [2017-08-01T15:34:05.152042 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:86:in `call'
+E, [2017-08-01T15:34:05.152085 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:384:in `block in converge_action'
+E, [2017-08-01T15:34:05.152127 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:527:in `synchronize_or_call'
+E, [2017-08-01T15:34:05.152168 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:489:in `block in action'
+E, [2017-08-01T15:34:05.152211 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.152262 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:488:in `action'
+E, [2017-08-01T15:34:05.152314 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:380:in `converge_action'
+E, [2017-08-01T15:34:05.152379 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:359:in `block in transition_to'
+E, [2017-08-01T15:34:05.152423 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `each'
+E, [2017-08-01T15:34:05.152496 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `transition_to'
+E, [2017-08-01T15:34:05.152606 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:157:in `verify'
+E, [2017-08-01T15:34:05.152684 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:186:in `block in test'
+E, [2017-08-01T15:34:05.152748 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.152808 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:182:in `test'
+E, [2017-08-01T15:34:05.152875 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2017-08-01T15:34:05.152944 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2017-08-01T15:34:05.152997 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2017-08-01T15:34:05.153051 #1448] ERROR -- os-centos7-ansible-latest: ----End Backtrace-----
+E, [2017-08-01T15:34:05.153114 #1448] ERROR -- os-centos7-ansible-latest: ---Nested Exception---
+E, [2017-08-01T15:34:05.153167 #1448] ERROR -- os-centos7-ansible-latest: Class: Kitchen::Transport::SshFailed
+E, [2017-08-01T15:34:05.153228 #1448] ERROR -- os-centos7-ansible-latest: Message: SSH exited (1) for command: [          
+          
+          ANSIBLE_ROLES_PATH=/tmp/kitchen/roles sudo -E -s  ansible-playbook -i /tmp/kitchen/hosts  -c local -M /tmp/kitchen/modules -v  --diff       /tmp/kitchen/test.yml
+]
+E, [2017-08-01T15:34:05.153271 #1448] ERROR -- os-centos7-ansible-latest: ----------------------
+E, [2017-08-01T15:34:05.153332 #1448] ERROR -- os-centos7-ansible-latest: ------Backtrace-------
+E, [2017-08-01T15:34:05.153383 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:83:in `rescue in call'
+E, [2017-08-01T15:34:05.153446 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/provisioner/base.rb:86:in `call'
+E, [2017-08-01T15:34:05.153487 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:384:in `block in converge_action'
+E, [2017-08-01T15:34:05.153528 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:527:in `synchronize_or_call'
+E, [2017-08-01T15:34:05.153572 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:489:in `block in action'
+E, [2017-08-01T15:34:05.153619 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.153698 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:488:in `action'
+E, [2017-08-01T15:34:05.153750 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:380:in `converge_action'
+E, [2017-08-01T15:34:05.153795 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:359:in `block in transition_to'
+E, [2017-08-01T15:34:05.153842 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `each'
+E, [2017-08-01T15:34:05.153886 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:358:in `transition_to'
+E, [2017-08-01T15:34:05.153928 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:157:in `verify'
+E, [2017-08-01T15:34:05.154003 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:186:in `block in test'
+E, [2017-08-01T15:34:05.154051 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/benchmark.rb:293:in `measure'
+E, [2017-08-01T15:34:05.154098 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/instance.rb:182:in `test'
+E, [2017-08-01T15:34:05.154145 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `public_send'
+E, [2017-08-01T15:34:05.154187 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:197:in `run_action_in_thread'
+E, [2017-08-01T15:34:05.154229 #1448] ERROR -- os-centos7-ansible-latest: /home/john/.rvm/gems/ruby-2.4.0/gems/test-kitchen-1.16.0/lib/kitchen/command.rb:169:in `block (2 levels) in run_action'
+E, [2017-08-01T15:34:05.154271 #1448] ERROR -- os-centos7-ansible-latest: ----End Backtrace-----
